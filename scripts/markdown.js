@@ -22,7 +22,7 @@ function generateCheatSheet(categorizedGithubEmojiIds) {
   lineTexts.push("");
 
   lineTexts.push(
-    `[![build](https://travis-ci.org/${repository}.svg?branch=master)](https://travis-ci.org/${repository})`
+    `[![Actions Status](https://github.com/SnO2WMaN/emoji-cheat-sheet/workflows/Node%20CI/badge.svg)](https://github.com/SnO2WMaN/emoji-cheat-sheet/actions)`
   );
   lineTexts.push("");
 
