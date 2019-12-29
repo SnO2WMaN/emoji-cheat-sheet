@@ -3,9 +3,9 @@ name: Node CI
 on:
   push:
     branches:
-        - core
+      - core
   schedule:
-    - cron "0 0 * * *"
+    - cron: "0 0 * * *"
 
 jobs:
   publish:
