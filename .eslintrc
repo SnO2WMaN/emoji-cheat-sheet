@@ -1,0 +1,4 @@
+{
+  "root":true,
+  "extends": ["@sno2wman/eslint-config","plugin:jest/recommended"]
+}
