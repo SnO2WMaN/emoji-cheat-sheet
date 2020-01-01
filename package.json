@@ -16,6 +16,7 @@
     "generate": "node ./scripts/generate.js > ./README.md"
   },
   "dependencies": {
+    "@octokit/rest": "^16.36.0",
     "cheerio": "^0.22.0",
     "request": "^2.88.0"
   },
