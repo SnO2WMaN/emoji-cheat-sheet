@@ -13,11 +13,12 @@
   "scripts": {
     "lint": "tslint -p . --type-check",
     "test": "jest",
-    "generate": "node ./scripts/generate.js > ./README.md"
+    "generate": "node ./scripts/generate.js"
   },
   "dependencies": {
     "@octokit/rest": "^16.36.0",
     "cheerio": "^0.22.0",
+    "dotenv": "^8.2.0",
     "request": "^2.88.0"
   },
   "devDependencies": {
