@@ -12,6 +12,7 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint scripts --ext .js",
+    "fmt": "prettier scripts/**/*.{js,ts} --write",
     "test": "jest",
     "generate": "node ./scripts/generate.js"
   },

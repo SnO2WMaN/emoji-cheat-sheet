@@ -1,12 +1,12 @@
-const { name: repoName, repository } = require("../package.json");
+const { name: repoName, repository } = require('../package.json')
 
-const resource1 = "[GitHub Emoji API](https://api.github.com/emojis)";
+const resource1 = '[GitHub Emoji API](https://api.github.com/emojis)'
 const resoruce2 =
-  "[Unicode Full Emoji List](https://unicode.org/emoji/charts/full-emoji-list.html)";
+  '[Unicode Full Emoji List](https://unicode.org/emoji/charts/full-emoji-list.html)'
 
-const columns = 2;
+const columns = 2
 
-const tocName = "Table of Contents";
+const tocName = 'Table of Contents'
 
 /**
  * @typedef {Array<string[]>} GithubEmojiIds
@@ -16,43 +16,40 @@ const tocName = "Table of Contents";
  * @param {{ [category: string]: { [subcategory: string]: GithubEmojiIds } }} categorizedGithubEmojiIds
  */
 function generateCheatSheet(categorizedGithubEmojiIds) {
-  const lineTexts = [];
+  const lineTexts = []
 
-  lineTexts.push(`# ${repoName}`);
-  lineTexts.push("");
+  lineTexts.push(`# ${repoName}`)
+  lineTexts.push('')
 
-  lineTexts.push(
-    `[![Actions Status](https://github.com/SnO2WMaN/emoji-cheat-sheet/workflows/Node%20CI/badge.svg)](https://github.com/SnO2WMaN/emoji-cheat-sheet/actions)`
-  );
-  lineTexts.push("");
+  lineTexts.push('')
 
   lineTexts.push(
     `This cheat sheet is automatically generated from ${resource1} and ${resoruce2}.`
-  );
-  lineTexts.push("");
+  )
+  lineTexts.push('')
 
-  const categories = Object.keys(categorizedGithubEmojiIds);
+  const categories = Object.keys(categorizedGithubEmojiIds)
 
-  lineTexts.push(`## ${tocName}`);
-  lineTexts.push("");
-  lineTexts.push(...generateToc(categories));
-  lineTexts.push("");
+  lineTexts.push(`## ${tocName}`)
+  lineTexts.push('')
+  lineTexts.push(...generateToc(categories))
+  lineTexts.push('')
 
   for (const category of categories) {
-    lineTexts.push(`### ${category}`);
-    lineTexts.push("");
+    lineTexts.push(`### ${category}`)
+    lineTexts.push('')
 
-    const subcategorizeGithubEmojiIds = categorizedGithubEmojiIds[category];
-    const subcategories = Object.keys(subcategorizeGithubEmojiIds);
+    const subcategorizeGithubEmojiIds = categorizedGithubEmojiIds[category]
+    const subcategories = Object.keys(subcategorizeGithubEmojiIds)
     if (subcategories.length > 1) {
-      lineTexts.push(...generateToc(subcategories));
-      lineTexts.push("");
+      lineTexts.push(...generateToc(subcategories))
+      lineTexts.push('')
     }
 
     for (const subcategory of subcategories) {
       if (subcategory) {
-        lineTexts.push(`#### ${subcategory}`);
-        lineTexts.push("");
+        lineTexts.push(`#### ${subcategory}`)
+        lineTexts.push('')
       }
 
       lineTexts.push(
@@ -61,19 +58,19 @@ function generateCheatSheet(categorizedGithubEmojiIds) {
           `[top](#${getHeaderId(category)})`,
           `[top](#${getHeaderId(tocName)})`
         )
-      );
-      lineTexts.push("");
+      )
+      lineTexts.push('')
     }
   }
 
-  return lineTexts.join("\n");
+  return lineTexts.join('\n')
 }
 
 /**
  * @param {string[]} headers
  */
 function generateToc(headers) {
-  return headers.map(header => `- [${header}](#${getHeaderId(header)})`);
+  return headers.map(header => `- [${header}](#${getHeaderId(header)})`)
 }
 
 /**
@@ -82,8 +79,8 @@ function generateToc(headers) {
 function getHeaderId(header) {
   return header
     .toLowerCase()
-    .replace(/ /g, "-")
-    .replace(/[^a-z0-9-]/g, "");
+    .replace(/ /g, '-')
+    .replace(/[^\d-a-z]/g, '')
 }
 
 /**
@@ -92,43 +89,43 @@ function getHeaderId(header) {
  * @param {string} rightText
  */
 function generateTable(githubEmojiIds, leftText, rightText) {
-  const lineTexts = [];
+  const lineTexts = []
 
-  let header = "";
-  let delimieter = "";
+  let header = ''
+  let delimieter = ''
 
-  header += "| ";
-  delimieter += "| - ";
+  header += '| '
+  delimieter += '| - '
   for (let i = 0; i < columns && i < githubEmojiIds.length; i++) {
-    header += `| ico | shortcode `;
-    delimieter += "| :-: | - ";
+    header += `| ico | shortcode `
+    delimieter += '| :-: | - '
   }
-  header += "| |";
-  delimieter += "| - |";
+  header += '| |'
+  delimieter += '| - |'
 
-  lineTexts.push(header, delimieter);
+  lineTexts.push(header, delimieter)
 
   for (let i = 0; i < githubEmojiIds.length; i += columns) {
-    let lineText = `| ${leftText} `;
+    let lineText = `| ${leftText} `
     for (let j = 0; j < columns; j++) {
       if (i + j < githubEmojiIds.length) {
-        const emojiIds = githubEmojiIds[i + j];
-        const emojiId = emojiIds[0];
-        lineText += `| :${emojiId}: | \`:${emojiId}:\` `;
+        const emojiIds = githubEmojiIds[i + j]
+        const emojiId = emojiIds[0]
+        lineText += `| :${emojiId}: | \`:${emojiId}:\` `
         for (let k = 1; k < emojiIds.length; k++) {
-          lineText += `<br /> \`:${emojiIds[k]}:\` `;
+          lineText += `<br /> \`:${emojiIds[k]}:\` `
         }
       } else if (githubEmojiIds.length > columns) {
-        lineText += "| | ";
+        lineText += '| | '
       }
     }
-    lineText += `| ${rightText} |`;
-    lineTexts.push(lineText);
+    lineText += `| ${rightText} |`
+    lineTexts.push(lineText)
   }
 
-  return lineTexts;
+  return lineTexts
 }
 
 module.exports = {
   generateCheatSheet
-};
+}

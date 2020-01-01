@@ -1,12 +1,10 @@
-require("jest-playback").setup(__dirname);
+require('jest-playback').setup(__dirname)
 
-const generate = require("./generate");
+const generate = require('./generate')
 
-test("emoji-cheat-sheet", async () => {
+test('emoji-cheat-sheet', async () => {
   expect(await generate()).toMatchInlineSnapshot(`
     "# emoji-cheat-sheet
-
-    [![Actions Status](https://github.com/SnO2WMaN/emoji-cheat-sheet/workflows/Node%20CI/badge.svg)](https://github.com/SnO2WMaN/emoji-cheat-sheet/actions)
 
     This cheat sheet is automatically generated from [GitHub Emoji API](https://api.github.com/emojis) and [Unicode Full Emoji List](https://unicode.org/emoji/charts/full-emoji-list.html).
 
@@ -1366,5 +1364,5 @@ test("emoji-cheat-sheet", async () => {
     | [top](#github-custom-emoji) | :shipit: | \`:shipit:\` <br /> \`:squirrel:\` | :suspect: | \`:suspect:\` | [top](#table-of-contents) |
     | [top](#github-custom-emoji) | :trollface: | \`:trollface:\` | | | [top](#table-of-contents) |
     "
-  `);
-});
+  `)
+})
