@@ -35,15 +35,3 @@ jobs:
         run: yarn --frozen-lockfile
       - name: Generate
         run: yarn generate
-      - name: Commit files
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Actions"
-          git checkout master
-          git add README.md
-          git commit -m "⏲ Update regularly"
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        if: success()
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
