@@ -3,7 +3,7 @@ name: Node CI
 on:
   push:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: '0 0 * * *'
 
 jobs:
   publish:
@@ -33,3 +33,6 @@ jobs:
         run: yarn --frozen-lockfile
       - name: Generate
         run: yarn generate
+        env:
+          GIST_ID: ${{ secrets.GIST_ID }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
