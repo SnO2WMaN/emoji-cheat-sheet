@@ -20,8 +20,7 @@ if (require.main === /** @type {unknown} */ (module)) {
       gist_id: gistId,
       description: 'https://github.com/SnO2WMaN/emoji-cheat-sheet',
       files: {
-        'index.md': {
-          filename: 'index.md',
+        'emoji-cheet-sheet.md': {
           content: cheatSheet
         }
       }
