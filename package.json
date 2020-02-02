@@ -25,7 +25,7 @@
   "devDependencies": {
     "@sno2wman/eslint-config": "^1.0.3",
     "@sno2wman/prettier-config": "^1.0.2",
-    "@types/cheerio": "0.22.15",
+    "@types/cheerio": "0.22.16",
     "@types/jest": "24.9.1",
     "@types/node": "13.5.0",
     "@types/request": "2.48.4",
